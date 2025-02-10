@@ -1,0 +1,89 @@
+"General editor settings
+set tabstop=4
+set nocompatible
+set shiftwidth=4
+set expandtab
+set autoindent
+set smartindent
+set ruler
+set showcmd
+set incsearch
+set shellslash
+set number
+set relativenumber
+set cino+=L0 
+syntax on
+filetype plugin indent on
+filetype off
+setlocal indentkeys-=:
+"keybindings for { completion, "Control-S" for escape, ctrl-a to select all and copy that
+imap <C-s>         <Esc>
+inoremap jk <Esc>
+map <C-a> <esc>ggVG"+y<CR>
+set belloff=all
+ 
+"Append template to new C++ files
+autocmd BufNewFile *.cpp 0r /home/talkysafe143/Desktop/Carpeta Sebastian/Trabajos Virtuales/Universidad/IngSistemas/ACM/Codeforces/template.cpp
+ 
+" Set C++ file type
+autocmd BufNewFile,BufRead *.cpp set filetype=cpp
+
+" Compile and run C++ program in subshell
+function! CompileAndRun()
+  let fileName = expand('%')
+  if fileName =~ '\.cpp$'
+    let exeName = substitute(fileName, '\.cpp$', '', '')
+    execute 'w | !g++ -static -DDEBUG -lm -s -x c++ -Wall -Wextra -O2 -std=c++17 -o ' . exeName . ' ' . fileName
+    if v:shell_error == 0
+      let cmd = "x-terminal-emulator -e bash -c './" . exeName . "; read -p \"Press enter to exit...\"'"
+      call system(cmd)
+      redraw!
+    endif
+  else
+    echo 'Not a C++ file'
+  endif
+endfunction
+
+" Map keys to compile and run current file
+map <F5> :call CompileAndRun()<CR>
+map <F9> :w<CR>:!clear<CR>:call CompileAndRun()<CR>
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-b> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap   <silent>   <F8>    :FloatermNew<CR>
+nnoremap   <silent>   <C-j>   :FloatermToggle<CR>
+
+call plug#begin('~/.local/share/nvim/plugged')
+" List your plugins here
+Plug 'jiangmiao/auto-pairs'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'ryanoasis/vim-devicons'
+Plug 'preservim/nerdtree'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'EdenEast/nightfox.nvim' 
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.6' }
+Plug 'voldikss/vim-floaterm'
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'npm install --frozen-lockfile --production',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
+call plug#end()
+
+:colorscheme carbonfox
+
+"Conc config
+source ~/.config/nvim/coc.vim
+
+let g:airline_theme='deus'
+let g:airline_powerline_fonts = 1
+let g:floaterm_autoclose=1
+let g:floaterm_wintype='vsplit'
+
+autocmd FileType tex :NoMatchParen
+autocmd FileType tex :set tw=110
