@@ -27,17 +27,26 @@ vim.cmd("nnoremap <A-h> <C-w>h")
 vim.cmd("nnoremap <A-j> <C-w>j")
 vim.cmd("nnoremap <A-k> <C-w>k")
 vim.cmd("nnoremap <A-l> <C-w>l")
-vim.cmd('autocmd BufNewFile *.cpp 0r /home/talkysafe143/Desktop/CarpetaSebastian/TrabajosVirtuales/Universidad/IngSistemas/ACM/Codeforces/template.cpp')
+vim.cmd('autocmd BufNewFile *.cpp 0r $TEMPLATE_PATH/template.cpp')
 vim.cmd [[ 
 function! CompileAndRun()
   let fileName = expand('%')
+  let staticOption = '-static'
+  let cppVersion = '23'
+  let macosCompiler = ''
+  if has('macunix')
+      let staticOption = ''
+      let cppVersion = '20'
+      let macosCompiler = '-11'
+  endif
   if fileName =~ '\.cpp$'
     let exeName = substitute(fileName, '\.cpp$', '', '')
-    execute 'w | !g++ -Wall -DDEBUG -Wextra -Wconversion -static -DONLINE_JUDGE -O2 -std=c++23 "'. fileName . '" -o "' . exeName . '"'
+    execute 'w | !g++' . macosCompiler .' -Wall -DDEBUG -Wextra -Wconversion' . staticOption . ' -DONLINE_JUDGE -O2 -std=c++' . cppVersion .' "'. fileName . '" -o "' . exeName . '"'
     let pref = ''
     if exeName[0] != '/'
         let pref = './'
     endif
+
     if v:shell_error == 0
       let cmd = "x-terminal-emulator -e bash -c '" . pref . "" . exeName . "; read -p \"Press enter to exit...\"'"
       call system(cmd)
