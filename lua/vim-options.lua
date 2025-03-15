@@ -48,9 +48,7 @@ function! CompileAndRun()
     endif
 
     if v:shell_error == 0
-      let cmd = "x-terminal-emulator -e bash -c '" . pref . "" . exeName . "; read -p \"Press enter to exit...\"'"
-      call system(cmd)
-      redraw!
+        execute 'vsplit | term ./' . exeName
     endif
   else
     echo 'Not a C++ file'
@@ -58,5 +56,6 @@ function! CompileAndRun()
 endfunction
 ]]
 vim.cmd('set splitbelow');
+vim.cmd('autocmd TermOpen * startinsert')
 vim.cmd('map <F9> :w<CR>:!clear<CR>:call CompileAndRun()<CR>')
 vim.cmd("map <C-t> :sp +term<CR>i")
