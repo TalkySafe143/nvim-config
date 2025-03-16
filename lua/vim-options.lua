@@ -27,7 +27,7 @@ vim.cmd("nnoremap <A-h> <C-w>h")
 vim.cmd("nnoremap <A-j> <C-w>j")
 vim.cmd("nnoremap <A-k> <C-w>k")
 vim.cmd("nnoremap <A-l> <C-w>l")
-vim.cmd('autocmd BufNewFile *.cpp 0r $CODEFORCES_TEMPLATE/template.cpp')
+vim.cmd('autocmd BufNewFile *.cpp 0r $TEMPLATE_PATH/template.cpp')
 vim.cmd [[ 
 function! CompileAndRun()
   let fileName = expand('%')
