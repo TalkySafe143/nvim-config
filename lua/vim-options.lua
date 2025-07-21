@@ -24,6 +24,10 @@ vim.cmd("inoremap <A-j> <C-\\><C-N><C-w>j")
 vim.cmd("inoremap <A-k> <C-\\><C-N><C-w>k")
 vim.cmd("inoremap <A-l> <C-\\><C-N><C-w>l")
 vim.cmd("nnoremap <A-h> <C-w>h")
+
+vim.cmd("nnoremap k kzz")
+vim.cmd("nnoremap j jzz")
+
 vim.cmd("nnoremap <A-j> <C-w>j")
 vim.cmd("nnoremap <A-k> <C-w>k")
 vim.cmd("nnoremap <A-l> <C-w>l")
