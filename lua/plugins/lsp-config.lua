@@ -14,6 +14,7 @@ local servers = {
     "cmake",
     "tailwindcss",
     "gopls",
+    "rust_analyzer"
 }
 return {
 	{
