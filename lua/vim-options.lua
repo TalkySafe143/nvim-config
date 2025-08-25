@@ -43,7 +43,7 @@ function! CompileAndRun()
         let pref = './'
     endif
     if v:shell_error == 0
-      let cmd = "x-terminal-emulator -e bash -c '" . pref . "" . exeName . "; read -p \"Press enter to exit...\"'"
+      let cmd = "kitty -e bash -c '" . pref . "" . exeName . "; read -p \"Press enter to exit...\"'"
       call system(cmd)
       redraw!
     endif
