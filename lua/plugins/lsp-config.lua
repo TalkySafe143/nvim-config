@@ -13,7 +13,8 @@ local servers = {
     "buf_ls",
     "cmake",
     "tailwindcss",
-    "gopls"
+    "gopls",
+    "rust_analyzer"
 }
 return {
 	{
