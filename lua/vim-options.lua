@@ -1,5 +1,6 @@
 -- VIM style commands
 vim.cmd("inoremap jk <Esc>")
+vim.cmd("set clipboard=unnamedplus")
 vim.cmd("set tabstop=4")
 vim.cmd("set nocompatible")
 vim.cmd("set shiftwidth=4")
