@@ -21,3 +21,10 @@ CompileFlags:
 ```
 
 You may replace the `11` to your GCC version.
+
+## Custom Mason command
+
+You may use `:CustomMasonSync` for exporting and installing the Mason packages.
+
+    - Use `force` argument for executing the Bash utility
+    - Without the argument, if the .mason_packages exists, then will load that packages.

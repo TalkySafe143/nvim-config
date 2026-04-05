@@ -1,6 +1,7 @@
 {
     "diagnostics.globals": [
         "vim",
-        "vim_logo_mode"
+        "vim_logo_mode",
+        "read_severs"
     ]
 }

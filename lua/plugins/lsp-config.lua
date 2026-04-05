@@ -1,22 +1,3 @@
-local servers = {
-    "lua_ls",
-    "clangd",
-    "ts_ls",
-    "astro",
-    "csharp_ls",
-    "cssls",
-    "dockerls",
-    "html",
-    "jdtls",
-    "pyright",
-    "texlab",
-    "buf_ls",
-    "cmake",
-    "tailwindcss",
-    "gopls",
-    "rust_analyzer",
-    "clojure_lsp"
-}
 return {
     {
         "williamboman/mason.nvim",
@@ -29,9 +10,18 @@ return {
         "williamboman/mason-lspconfig.nvim",
         config = function()
             require("mason-lspconfig").setup({
-                ensure_installed = servers,
             })
         end,
+    },
+    {
+        "WhoIsSethDaniel/mason-tool-installer.nvim",
+        config = function()
+            require('mason-tool-installer').setup {
+                auto_update = false,
+                run_on_start = false,
+                debounce_hours = 5, -- at least 5 hours between attempts to install/update
+            }
+        end
     },
     {
         "neovim/nvim-lspconfig",
