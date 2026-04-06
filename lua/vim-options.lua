@@ -8,6 +8,7 @@ vim.cmd("set autoindent")
 vim.cmd("set smartindent")
 vim.cmd("set ruler")
 vim.cmd("set showcmd")
+vim.cmd("set showtabline=0")
 vim.cmd("set incsearch")
 vim.cmd("set shellslash")
 vim.cmd("set number")
@@ -32,7 +33,7 @@ vim.cmd("nnoremap <A-j> <C-w>j")
 vim.cmd("nnoremap <A-k> <C-w>k")
 vim.cmd("nnoremap <A-l> <C-w>l")
 vim.cmd('autocmd BufNewFile *.cpp 0r $TEMPLATE_PATH/template.cpp')
-vim.cmd [[ 
+vim.cmd [[
 function! CompileAndRun()
   let fileName = expand('%')
   if fileName =~ '\.cpp$'

@@ -52,8 +52,10 @@ return {
     config = function()
         require('lualine').setup({
             options = {
-                theme = bubbles_theme,
+                -- theme = bubbles_theme,
+                theme = 'jellybeans-nvim',
                 component_separators = '',
+                always_show_tabline = false,
                 section_separators = { left = '', right = '' },
             },
             sections = {
