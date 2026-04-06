@@ -2,7 +2,7 @@ return {
     "sphamba/smear-cursor.nvim",
     opts = {
         smear_between_buffers = true,
-        smear_insert_mode = true,
+        smear_insert_mode = false,
         -- stiffness = 0.8,
         -- trailing_stiffness = 0.8,
         -- stiffness_insert_mode = 0.7,
