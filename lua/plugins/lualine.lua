@@ -62,10 +62,15 @@ return {
                 lualine_c = {
                     -- '%=', --[[ add your center components here in place of this comment ]]
                     'fancy_diff',
+                    'fancy_diagnostics',
                     {
-                        'fancy_diagnostics',
-
+                        'navic',
+                        color_correction = "static",
+                        fmt = function(str)
+                            return "%=" .. str .. "%="
+                        end
                     }
+
                 },
                 lualine_x = {},
                 lualine_y = { 'filetype', 'progress' },
