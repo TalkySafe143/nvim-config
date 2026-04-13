@@ -5,8 +5,8 @@ return {
         dependencies = { 'nvim-lua/plenary.nvim' },
         config = function()
             local builtin = require("telescope.builtin")
-            vim.keymap.set('n', '<C-p>', builtin.find_files, { desc = 'Telescope find files' })
-            vim.keymap.set('n', '<leader>pp', builtin.lsp_dynamic_workspace_symbols, {})
+            vim.keymap.set('n', '<leader>fi', builtin.find_files, { desc = 'Telescope find files' })
+            vim.keymap.set('n', '<leader>fs', builtin.lsp_dynamic_workspace_symbols, {})
             require("telescope").setup({
                 defaults = {
                     layout_config = {
