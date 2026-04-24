@@ -47,5 +47,5 @@ function! CompileAndRun()
 endfunction
 ]]
 vim.cmd('set splitbelow');
-vim.cmd('map <leader>rr :w<CR>:!clear<CR>:call CompileAndRun()<CR>')
+vim.cmd('map <F9> :w<CR>:!clear<CR>:call CompileAndRun()<CR>')
 vim.cmd("map <leader>tt :sp +term<CR>i")
