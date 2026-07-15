@@ -31,65 +31,71 @@ local bubbles_theme = {
 function vim_logo_mode()
     local mode = vim.fn.mode()
     local mode_map = {
-        n = 'NORMAL',
-        i = 'INSERT',
-        v = 'VISUAL',
-        V = 'V-LINE',
-        ['\22'] = 'V-BLOCK',
-        c = 'COMMAND',
+        n = "NORMAL",
+        i = "INSERT",
+        v = "VISUAL",
+        V = "V-LINE",
+        ["\22"] = "V-BLOCK",
+        c = "COMMAND",
     }
 
-    local icon = '' -- icono de Vim (Nerd Font)
-    return icon .. ' ' .. (mode_map[mode] or mode)
+    local icon = "" -- icono de Vim (Nerd Font)
+    return icon .. " " .. (mode_map[mode] or mode)
 end
 
 return {
-    'nvim-lualine/lualine.nvim',
+    "nvim-lualine/lualine.nvim",
     dependencies = {
-        'nvim-tree/nvim-web-devicons',
+        "nvim-tree/nvim-web-devicons",
         "meuter/lualine-so-fancy.nvim",
     },
     config = function()
-        require('lualine').setup({
+        require("lualine").setup({
             options = {
                 -- theme = bubbles_theme,
-                theme = 'jellybeans-nvim',
-                component_separators = '',
+                theme = "oxocarbon",
+                component_separators = "",
                 always_show_tabline = false,
-                section_separators = { left = '', right = '' },
+                section_separators = { left = "", right = "" },
             },
             sections = {
-                lualine_a = { { vim_logo_mode, separator = { left = '', right = '' }, right_padding = 2 } },
-                lualine_b = { { 'filename', 'fancy_branch' } },
+                lualine_a = {
+                    {
+                        vim_logo_mode,
+                        color = { gui = "bold" },
+                        separator = { left = "", right = "" },
+                        right_padding = 2,
+                    },
+                },
+                lualine_b = { { "filename", "fancy_branch" } },
                 lualine_c = {
                     -- '%=', --[[ add your center components here in place of this comment ]]
-                    'fancy_diff',
-                    'fancy_diagnostics',
+                    "fancy_diff",
+                    "fancy_diagnostics",
                     {
-                        'navic',
+                        "navic",
                         color_correction = "static",
                         fmt = function(str)
                             return "%=" .. str .. "%="
-                        end
-                    }
-
+                        end,
+                    },
                 },
                 lualine_x = {},
-                lualine_y = { 'filetype', 'progress' },
+                lualine_y = { "filetype", "progress" },
                 lualine_z = {
-                    { 'fancy_location', separator = { right = '' }, left_padding = 2 },
+                    { "fancy_location", separator = { right = "" }, left_padding = 2 },
                 },
             },
             inactive_sections = {
-                lualine_a = { 'filename' },
+                lualine_a = { "filename", color = { gui = "bold" } },
                 lualine_b = {},
                 lualine_c = {},
                 lualine_x = {},
                 lualine_y = {},
-                lualine_z = { 'location' },
+                lualine_z = { "location" },
             },
             tabline = {},
-            extensions = { 'neo-tree' },
+            extensions = { "neo-tree" },
         })
-    end
+    end,
 }
