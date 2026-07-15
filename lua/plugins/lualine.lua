@@ -87,7 +87,7 @@ return {
                 },
             },
             inactive_sections = {
-                lualine_a = { "filename", color = { gui = "bold" } },
+                lualine_a = { "filename" },
                 lualine_b = {},
                 lualine_c = {},
                 lualine_x = {},
