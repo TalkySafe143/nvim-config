@@ -7,6 +7,7 @@ return {
       "MunifTanjim/nui.nvim",
       -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
     },
+    lazy = false,
     config = function()
         require("neo-tree").setup({
         event_handlers = {
@@ -15,9 +16,7 @@ return {
             event = "file_open_requested",
             handler = function()
               -- auto close
-              -- vim.cmd("Neotree close")
-              -- OR
-              require("neo-tree.command").execute({ action = "close" })
+              vim.cmd("Neotree close")
             end
           },
 
